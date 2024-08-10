@@ -7,7 +7,6 @@ import { StatusBar } from "expo-status-bar";
 import { navigationRef } from "./Navigator.helpers";
 import { NavigatorProps as Props, NavigatorScreens } from "./Navigator.types";
 import Home from "../screens/Home/Home.screen";
-import Providers from "../providers/Providers";
 
 const Stack = createNativeStackNavigator<NavigatorScreens>();
 

@@ -5,7 +5,7 @@ import Navigator from "./src/navigation/Navigator";
 
 export default function App() {
   return (
-    <View style={{ backgroundColor: "purple", flex: 1 }}>
+    <View style={{ flex: 1 }}>
       <Providers>
         <Navigator />
       </Providers>

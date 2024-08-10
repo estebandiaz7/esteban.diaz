@@ -6,7 +6,10 @@
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "check-types": "tsc",
+    "lint": "eslint .",
+    "preCommit": "yarn check-types && yarn lint"
   },
   "dependencies": {
     "@react-navigation/native": "^6.1.18",
@@ -25,6 +28,8 @@
     "@babel/core": "^7.20.0",
     "@tanstack/eslint-plugin-query": "^5.51.15",
     "@types/react": "~18.2.45",
+    "eslint": "^8.57.0",
+    "eslint-config-expo": "^7.1.2",
     "typescript": "~5.3.3"
   },
   "private": true
