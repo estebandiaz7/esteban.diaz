@@ -1,11 +1,6 @@
 import axiosDefault from "utils/axios.utils";
-import {
-  fetchProducts,
-  verifyProductId,
-  createProduct,
-  updateProduct,
-  deleteProduct,
-} from "./finance.service";
+import { fetchProducts, updateProduct, deleteProduct } from "./finance.service";
+import { verifyProductId, createProduct } from "./finance.service";
 import { buildProduct } from "utils/testUtils/builders/product.builders";
 
 jest.mock("utils/axios.utils");

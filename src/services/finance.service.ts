@@ -5,7 +5,7 @@ import { getStatusAndDataFromError } from "utils/axios.utils";
 
 const financialURL = `/bp/products`;
 
-export const fetchProducts = async () => {
+export const fetchProducts = async (): Promise<FinanceProduct[]> => {
   const response = await axiosDefault.get(financialURL);
   const { data } = response;
   return data;

@@ -26,8 +26,8 @@ const Home: React.FC<Props> = (props) => {
   const { navigate } = useNavigation<RootNavigatorPropList>();
 
   const results = useMemo(() => {
-    if (!searchText) return data;
     if (!data) return [];
+    if (!searchText) return data;
     return searchByText(data, searchText);
   }, [data, searchText]);
   const productsLength = !!results?.length;

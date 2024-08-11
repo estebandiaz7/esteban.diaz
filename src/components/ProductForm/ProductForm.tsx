@@ -43,8 +43,13 @@ const ProductForm: React.FC<Props> = (props) => {
   const { mutateAsync: verifyProductId, reset: resetVerify } = verifyMutation;
   const { mutateAsync: createProduct, reset: resetCreate } = createMutation;
   const { mutateAsync: updateProduct, reset: resetUpdate } = updateMutation;
+  const { isPending: isPendingCreateMutation } = createMutation;
+  const { isPending: isPendingUpdateMutation } = updateMutation;
   const { isPending: isPendingVerifyMutation } = verifyMutation;
-  const isPendingMutations = isPendingVerifyMutation;
+  const isPendingMutations =
+    isPendingVerifyMutation ||
+    isPendingCreateMutation ||
+    isPendingUpdateMutation;
 
   const formMethods = selectedProduct
     ? updateProductMethods
