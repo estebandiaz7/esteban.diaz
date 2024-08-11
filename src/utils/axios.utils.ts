@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
 import CONSTANTS from "../config/constants";
 
@@ -23,5 +23,34 @@ axiosDefault.interceptors.response.use(
   (response) => response,
   (error) => report(error)
 );
+
+export const getStatusAndDataFromError = (e: AxiosError) => {
+  const status = getStatusFromError(e);
+  const message = getDataFromError(e);
+  if (status && message) return `${status} - ${message}`;
+};
+
+export const getStatusFromError = (e: AxiosError) => {
+  const status = e.response?.status;
+  if (status) return `E${status}`;
+};
+
+export const getDataFromError = (e: AxiosError) => {
+  const data = e.response?.data;
+  if (data) return `${data}`;
+};
+
+export const getStatusAndErrorFromResponse = (
+  e: AxiosError<{ error: string }>
+) => {
+  const status = getStatusFromError(e);
+  const message = getErrorFromDataResponse(e);
+  if (status && message) return `${status} - ${message}`;
+};
+
+export const getErrorFromDataResponse = (e: AxiosError<{ error: string }>) => {
+  const error = e.response?.data.error;
+  if (error) return `${error}`;
+};
 
 export default axiosDefault;

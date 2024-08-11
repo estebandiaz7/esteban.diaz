@@ -26,6 +26,7 @@ const Search: React.FC<Props> = (props) => {
         returnKeyType="search"
         onSubmitEditing={onSubmitEditing}
         blurOnSubmit
+        autoCapitalize="none"
         placeholder="Buscar..."
       />
       {text.length > 0 ? (

@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: black,
     fontWeight: "bold",
+    alignSelf: "flex-end",
   },
   item: {
     flexDirection: "row",
@@ -33,6 +34,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingTop: 16,
     paddingLeft: 12,
+  },
+  rightContent: {
+    width: "50%",
   },
   top: {
     paddingTop: 24,
@@ -43,8 +47,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   image: {
-    width: 160,
-    height: 160,
+    marginTop: 16,
+    width: 200,
+    height: 120,
   },
   footer: {
     justifyContent: "space-evenly",

@@ -66,7 +66,7 @@ const Home: React.FC<Props> = (props) => {
       <Search text={searchText} setText={setSearchText} />
       <FlatList
         bounces={productsLength}
-        data={data}
+        data={results}
         renderItem={renderItemMemoized}
         ListEmptyComponent={renderStates}
         contentContainerStyle={styles.contentContainer}

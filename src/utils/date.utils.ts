@@ -1,4 +1,6 @@
-export const formatDate = (oldDate: string, newDate: string) => {
+import dayjs from "dayjs";
+
+export const formatInputDate = (oldDate: string, newDate: string) => {
   let cleaned = "";
 
   // Ensure the string is no longer than 8 characters
@@ -25,4 +27,14 @@ export const formatDate = (oldDate: string, newDate: string) => {
   }
 
   return cleaned;
+};
+
+export const formatDate = (date?: string) => {
+  if (!date) return "";
+  return dayjs(date).format("DD/MM/YYYY");
+};
+
+export const formatFrontendDateToBackend = (frontDate: string) => {
+  const backendDate = dayjs(frontDate, "DD/MM/YYYY").format("YYYY-MM-DD");
+  return backendDate;
 };

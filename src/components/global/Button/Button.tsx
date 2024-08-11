@@ -7,7 +7,8 @@ import { getBackgroundColorByButtonType } from "./Button.helpers";
 import { getTextColorByButtonType } from "./Button.helpers";
 
 const Button: React.FC<Props> = (props) => {
-  const { title, buttonStyle, textStyle, buttonType, onPress } = props;
+  const { title, buttonStyle, textStyle, buttonType, disabled } = props;
+  const { onPress } = props;
   const backgroundColor = useMemo(
     () => getBackgroundColorByButtonType(buttonType),
     [buttonType]
@@ -21,6 +22,7 @@ const Button: React.FC<Props> = (props) => {
     <TouchableOpacity
       style={[styles.container, buttonStyle, { backgroundColor }]}
       onPress={onPress}
+      disabled={disabled}
     >
       <Text style={[styles.text, textStyle, { color }]}>{title}</Text>
     </TouchableOpacity>

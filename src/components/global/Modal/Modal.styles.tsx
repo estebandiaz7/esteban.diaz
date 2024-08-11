@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 import colors from "../../../config/colors";
 
-const { backdrop, white, border } = colors;
+const { backdrop, white, border, red } = colors;
 
 const styles = StyleSheet.create({
   modalOverlay: {
@@ -36,6 +36,12 @@ const styles = StyleSheet.create({
   modalText: {
     fontSize: 16,
     textAlign: "center",
+  },
+  errorText: {
+    paddingTop: 8,
+    textAlign: "center",
+    fontSize: 14,
+    color: red,
   },
   footer: {
     flexDirection: "column",

@@ -48,6 +48,7 @@ const TextBox = forwardRef<TextInput, Props>((props, ref) => {
         returnKeyType={returnKeyType}
         onSubmitEditing={onSubmitEditing}
         editable={editable}
+        autoCapitalize="none"
         underlineColorAndroid="transparent"
       />
       {showLoader ? showLoaderComponent : null}

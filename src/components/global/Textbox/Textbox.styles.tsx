@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     flexDirection: "row",
+    paddingBottom: 8,
   },
   label: {
     fontSize: 14,
@@ -20,7 +21,7 @@ const styles = StyleSheet.create({
   textBox: {
     height: 40,
     paddingHorizontal: 10,
-    fontSize: 16,
+    fontSize: 14,
     borderRadius: 4,
     backgroundColor: "white",
     borderWidth: 1,

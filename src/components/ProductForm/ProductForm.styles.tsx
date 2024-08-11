@@ -2,7 +2,6 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   contentContainer: {
-    height: "100%",
     paddingBottom: 32,
   },
   formContainer: {
@@ -10,8 +9,10 @@ const styles = StyleSheet.create({
     padding: 24,
     justifyContent: "space-between",
   },
-  top: {},
-  bottom: {},
+  title: {
+    fontSize: 22,
+    paddingBottom: 20,
+  },
   resetButton: {
     marginTop: 16,
   },
