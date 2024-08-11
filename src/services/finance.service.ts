@@ -20,7 +20,9 @@ export const verifyProductId = async (
   return data;
 };
 
-export const createProduct = async (product: FinanceProduct) => {
+export const createProduct = async (
+  product: FinanceProduct
+): Promise<FinanceProduct> => {
   try {
     const response = await axiosDefault.post(financialURL, product);
     const { data } = response;
@@ -32,7 +34,9 @@ export const createProduct = async (product: FinanceProduct) => {
   }
 };
 
-export const updateProduct = async (product: FinanceProduct) => {
+export const updateProduct = async (
+  product: FinanceProduct
+): Promise<FinanceProduct> => {
   try {
     const response = await axiosDefault.put(financialURL, product);
     const { data } = response;
