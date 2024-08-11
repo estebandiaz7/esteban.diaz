@@ -1,17 +1,29 @@
-import React, { useCallback } from "react";
-import { FlatList, ListRenderItem, Text, View } from "react-native";
+import React, { useCallback, useMemo, useState } from "react";
+
+import { ListRenderItem, View, FlatList } from "react-native";
 
 import styles from "./Home.styles";
 import { HomeProps as Props } from "./Home.types";
 import { useFetchProducts } from "../../../services/finance.service.hooks";
 import EmptyState from "../EmptyState/EmptyState";
 import { FinanceProduct } from "../../../types/product.types";
-import { renderPlaceholders } from "../../../utils/common.utils";
+import { renderPlaceholders, searchByText } from "../../../utils/common.utils";
+import Product from "../../Product/Product";
+import Search from "../../Search/Search";
 
 const Home: React.FC<Props> = (props) => {
-  const { data, isError, isFetching, isSuccess, error, refetch } =
-    useFetchProducts();
+  const fetchProducts = useFetchProducts();
+  const { data, isError, isFetching, isSuccess, error } = fetchProducts;
+
+  const { refetch } = fetchProducts;
   const errorMessage = error ? error.message : "";
+  const [searchText, setSearchText] = useState("");
+  const results = useMemo(() => {
+    if (!searchText) return data;
+    if (!data) return [];
+    return searchByText(data, searchText);
+  }, [data, searchText]);
+  const productsLength = !!results?.length;
 
   const refetchProducts = async () => {
     await refetch();
@@ -32,24 +44,20 @@ const Home: React.FC<Props> = (props) => {
 
   const renderItem: ListRenderItem<FinanceProduct> = useCallback((list) => {
     const { item } = list;
-    const { id, name } = item;
-    return (
-      <View style={styles.containerCoupon}>
-        <Text style={styles.titlePost}>{name}</Text>
-        <Text style={styles.titlePost}>{id}</Text>
-      </View>
-    );
+    return <Product product={item} />;
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text>Search</Text>
+      <Search text={searchText} setText={setSearchText} />
       <FlatList
+        bounces={productsLength}
         data={data}
         renderItem={renderItem}
         ListEmptyComponent={renderEmptyState}
         contentContainerStyle={styles.contentContainer}
         refreshing={isFetching}
+        keyExtractor={(_item, index) => index.toString()}
       />
     </View>
   );

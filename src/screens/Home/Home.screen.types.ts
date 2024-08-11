@@ -1,9 +1,8 @@
-// Interfaces and types from component Home
 import { RouteProp } from "@react-navigation/native";
-import { NavigatorScreens } from "../../navigation/Navigator.types";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 
-// Component Props
+import { NavigatorScreens } from "../../navigation/Navigator.types";
+
 export interface HomeProps {
   navigation: HomeNavigation;
   route: HomeRoute;

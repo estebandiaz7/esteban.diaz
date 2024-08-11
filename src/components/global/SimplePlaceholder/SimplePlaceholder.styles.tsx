@@ -10,9 +10,10 @@ const styles = StyleSheet.create({
     width: "100%",
     backgroundColor: white,
     borderColor: border,
-    borderWidth: 1,
+    borderBottomWidth: 1,
     justifyContent: "space-between",
     padding: 12,
+    borderRadius: 8,
   },
   name: {
     height: 8,

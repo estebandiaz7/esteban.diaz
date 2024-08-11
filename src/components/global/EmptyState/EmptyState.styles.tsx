@@ -7,6 +7,7 @@ const { black, primary, white } = colors;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    borderRadius: 8,
     backgroundColor: white,
     width: "100%",
     alignItems: "center",

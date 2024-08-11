@@ -1,4 +1,5 @@
 import SimplePlaceholder from "../components/global/SimplePlaceholder/SimplePlaceholder";
+import { FinanceProduct } from "../types/product.types";
 
 export const asyncDelay = (time: number): Promise<void> => {
   return new Promise((resolve) => {
@@ -13,4 +14,20 @@ export const renderPlaceholders = (length: number) => {
   return Array.from({ length: temporal }).map((_, index) => (
     <SimplePlaceholder key={index} />
   ));
+};
+
+export const searchByText = (
+  products: FinanceProduct[],
+  searchText: string
+) => {
+  const results = products.filter((item) => {
+    const { id, name, description } = item;
+    return (
+      id.includes(searchText) ||
+      name.includes(searchText) ||
+      description.includes(searchText)
+    );
+  });
+
+  return results;
 };
