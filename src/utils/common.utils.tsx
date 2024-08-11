@@ -1,3 +1,4 @@
+import { Platform } from "react-native";
 import SimplePlaceholder from "../components/global/SimplePlaceholder/SimplePlaceholder";
 import { FinanceProduct } from "../types/product.types";
 
@@ -31,3 +32,6 @@ export const searchByText = (
 
   return results;
 };
+
+export const isiOS = Platform.OS === "ios";
+export const isAndroid = Platform.OS === "android";

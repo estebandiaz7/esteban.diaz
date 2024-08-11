@@ -16,6 +16,7 @@ const styles = StyleSheet.create({
     backgroundColor: white,
     borderColor: border,
     borderWidth: 1,
+    paddingBottom: 32,
   },
   placeholder: {
     flex: 1,
