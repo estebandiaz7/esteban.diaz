@@ -1,9 +1,10 @@
 import React from "react";
+import { render } from "setupTests";
 
 import EmptyState from "./EmptyState";
 
-describe("** EmptyState Component Test Suit **", () => {
-  it("EmptyState render component", () => {
+describe("EmptyState", () => {
+  it("renders with default props", () => {
     render(<EmptyState />);
   });
 });

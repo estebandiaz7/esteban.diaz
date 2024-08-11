@@ -1,6 +1,6 @@
 import React from "react";
-
 import { render } from "setupTests";
+
 import ProductDetail from "./ProductDetail";
 
 describe("ProductDetail", () => {

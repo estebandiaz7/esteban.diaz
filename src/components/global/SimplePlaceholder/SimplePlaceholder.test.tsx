@@ -1,6 +1,6 @@
 import React from "react";
-
 import { render } from "setupTests";
+
 import SimplePlaceholder from "./SimplePlaceholder";
 
 describe("SimplePlaceholder", () => {

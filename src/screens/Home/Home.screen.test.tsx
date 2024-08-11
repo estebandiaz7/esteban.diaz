@@ -1,6 +1,6 @@
 import React from "react";
-
 import { render } from "setupTests";
+
 import { buildStackNavigation } from "utils/testUtils/builders/navigation.builder";
 import { buildRoute } from "utils/testUtils/builders/navigation.builder";
 import Home from "./Home.screen";

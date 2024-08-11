@@ -24,11 +24,6 @@ const Navigator: React.FC<Props> = (props) => {
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="ProductDetail" component={ProductDetail} />
           <Stack.Screen name="ProductForm" component={ProductFormScreen} />
-          {/* <Stack.Screen
-            name="ServerError"
-            component={ServerError}
-            options={{ title: "Something went wrong", headerShown: false }}
-          /> */}
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
