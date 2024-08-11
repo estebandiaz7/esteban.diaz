@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 import colors from "config/colors";
 
-const { gray54, black, gray93, red, white } = colors;
+const { gray54, black, red } = colors;
 
 const styles = StyleSheet.create({
   container: {
@@ -54,25 +54,6 @@ const styles = StyleSheet.create({
   footer: {
     justifyContent: "space-evenly",
     flex: 0.5,
-  },
-  button: {
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "row",
-    borderRadius: 8,
-    padding: 16,
-  },
-  edit: {
-    backgroundColor: gray93,
-  },
-  editText: {
-    color: black,
-  },
-  delete: {
-    backgroundColor: red,
-  },
-  deleteText: {
-    color: white,
   },
   imageError: {
     fontSize: 14,

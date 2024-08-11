@@ -6,7 +6,6 @@ import { TextInputProps } from "react-native";
 export interface TextBoxProps
   extends UseControllerProps,
     Omit<TextInputProps, "defaultValue"> {
-  showLoader?: boolean;
   label: string;
   formatter?: (oldValue: string, newValue: string) => string;
 }

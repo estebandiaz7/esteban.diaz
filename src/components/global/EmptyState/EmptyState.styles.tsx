@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 import colors from "config/colors";
 
-const { black, primary, white } = colors;
+const { white } = colors;
 
 const styles = StyleSheet.create({
   container: {
@@ -17,15 +17,6 @@ const styles = StyleSheet.create({
   emptyText: {
     paddingVertical: 12,
     fontSize: 16,
-  },
-  button: {
-    padding: 12,
-    borderRadius: 4,
-    backgroundColor: primary,
-  },
-  buttonText: {
-    color: black,
-    fontSize: 14,
   },
 });
 

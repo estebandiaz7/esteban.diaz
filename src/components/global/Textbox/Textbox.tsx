@@ -2,14 +2,14 @@ import React from "react";
 import { forwardRef } from "react";
 import { useController, useFormState } from "react-hook-form";
 import { useFormContext } from "react-hook-form";
-import { View, Text, TextInput, ActivityIndicator } from "react-native";
+import { View, Text, TextInput } from "react-native";
 
 import styles from "./Textbox.styles";
 import { TextBoxProps as Props } from "./Textbox.types";
 
 const TextBox = forwardRef<TextInput, Props>((props, ref) => {
   const { name, label, rules, defaultValue, keyboardType, placeholder } = props;
-  const { returnKeyType, editable = true, showLoader } = props;
+  const { returnKeyType, editable = true } = props;
   const { onSubmitEditing = () => {}, formatter } = props;
 
   const formContext = useFormContext();
@@ -32,8 +32,6 @@ const TextBox = forwardRef<TextInput, Props>((props, ref) => {
     <Text style={[styles.label]}>{label}</Text>
   ) : null;
 
-  const showLoaderComponent = <ActivityIndicator size="small" />;
-
   return (
     <View style={[styles.wrapper, disabledStyle]}>
       <View style={styles.labelContainer}>{labelComponent}</View>
@@ -51,7 +49,6 @@ const TextBox = forwardRef<TextInput, Props>((props, ref) => {
         autoCapitalize="none"
         underlineColorAndroid="transparent"
       />
-      {showLoader ? showLoaderComponent : null}
       {message ? <Text style={styles.error}>{`${message}`}</Text> : null}
     </View>
   );
