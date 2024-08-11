@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { View, Text, Image, NativeSyntheticEvent } from "react-native";
-import { ImageErrorEventData } from "react-native";
+import { View, Text, Image, ScrollView } from "react-native";
+import { NativeSyntheticEvent, ImageErrorEventData } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import styles from "./ProductDetail.styles";
@@ -47,7 +47,11 @@ const ProductDetail: React.FC<Props> = (props) => {
 
   return (
     <>
-      <View style={styles.container}>
+      <ScrollView
+        style={styles.scrollView}
+        contentContainerStyle={styles.container}
+        showsVerticalScrollIndicator={false}
+      >
         <View>
           <View style={styles.top}>
             <Text style={styles.id}>{`ID: ${id}`}</Text>
@@ -84,7 +88,7 @@ const ProductDetail: React.FC<Props> = (props) => {
             buttonType="delete"
           />
         </View>
-      </View>
+      </ScrollView>
       <Modal modalVisible={modalVisible} setModalVisible={setModalVisible} />
     </>
   );

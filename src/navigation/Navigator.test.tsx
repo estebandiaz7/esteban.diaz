@@ -2,7 +2,7 @@ import { render } from "@testing-library/react-native";
 import React from "react";
 import { createNavigationContainerRef } from "@react-navigation/native";
 
-import Navigator from "../navigation/Navigator";
+import Navigator from "navigation/Navigator";
 import { NavigatorScreens } from "./Navigator.types";
 
 export const navigationRef = createNavigationContainerRef<NavigatorScreens>();

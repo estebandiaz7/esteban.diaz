@@ -22,6 +22,9 @@ const styles = StyleSheet.create({
     fontSize: 13,
     paddingBottom: 4,
   },
+  icon: {
+    justifyContent: "center",
+  },
 });
 
 export default styles;

@@ -1,5 +1,5 @@
-import { buildRoute } from "../builders/navigation.builder";
-import { buildStackNavigation } from "../builders/navigation.builder";
+import { buildRoute } from "utils/testUtils/builders/navigation.builder";
+import { buildStackNavigation } from "utils/testUtils/builders/navigation.builder";
 
 describe("Navigation Builders", () => {
   describe("buildRoute", () => {

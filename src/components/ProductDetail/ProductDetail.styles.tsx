@@ -7,9 +7,12 @@ const { gray54, black, red } = colors;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 24,
-    flexDirection: "column",
     justifyContent: "space-between",
+    paddingHorizontal: 24,
+    paddingVertical: 32,
+  },
+  scrollView: {
+    height: "100%",
   },
   id: {
     fontSize: 22,
@@ -36,7 +39,7 @@ const styles = StyleSheet.create({
     paddingLeft: 12,
   },
   rightContent: {
-    width: "50%",
+    width: "60%",
   },
   top: {
     paddingTop: 24,

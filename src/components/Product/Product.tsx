@@ -27,7 +27,7 @@ const Product: React.FC<Props> = (props) => {
         <Text style={styles.name}>{name}</Text>
         <Text style={styles.id}>{`ID: ${id}`}</Text>
       </View>
-      <View style={{ justifyContent: "center" }}>
+      <View style={styles.icon}>
         <AntDesign name="right" size={16} color="black" />
       </View>
     </TouchableOpacity>

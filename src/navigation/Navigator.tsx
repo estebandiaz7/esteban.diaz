@@ -20,7 +20,11 @@ const Navigator: React.FC<Props> = (props) => {
       <NavigationContainer ref={navigationRef}>
         <Stack.Navigator
           initialRouteName="Home"
-          screenOptions={{ title: "Banco", headerBackTitleVisible: false }}
+          screenOptions={{
+            title: "Banco",
+            headerTitleAlign: "center",
+            headerBackTitleVisible: false,
+          }}
         >
           <Stack.Screen name="Home" component={Home} />
           <Stack.Screen name="ProductDetail" component={ProductDetail} />

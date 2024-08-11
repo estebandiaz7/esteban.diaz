@@ -10,7 +10,6 @@ export type NavigatorScreens = {
   Home?: HomeParams;
   ProductDetail?: ProductDetailParams;
   ProductForm?: ProductFormParams;
-  // ServerError?: ServerErrorParams;
 };
 
 export type RootNavigatorPropList = NativeStackNavigationProp<NavigatorScreens>;

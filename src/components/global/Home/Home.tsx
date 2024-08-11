@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { ListRenderItem, View, FlatList } from "react-native";
+import { ListRenderItem, View, FlatList, RefreshControl } from "react-native";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
 import styles from "./Home.styles";
@@ -77,8 +77,12 @@ const Home: React.FC<Props> = (props) => {
         renderItem={renderItemMemoized}
         ListEmptyComponent={renderStates}
         contentContainerStyle={styles.contentContainer}
+        showsVerticalScrollIndicator={false}
         refreshing={isFetching}
         keyExtractor={(_item, index) => index.toString()}
+        refreshControl={
+          <RefreshControl refreshing={isFetching} onRefresh={refetch} />
+        }
       />
       <Button title="Agregar" onPress={addProduct} />
     </View>

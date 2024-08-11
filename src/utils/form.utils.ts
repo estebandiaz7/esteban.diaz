@@ -61,7 +61,6 @@ export const getProductFormSchema = () => {
         "La fecha debe ser exactamente un año posterior a la fecha de liberación",
         function (date) {
           const dateRelease = this.parent.dateRelease;
-          console.log({ dateRelease, date });
           const isExactlyOneYearAfter = dayjs(dateRelease, FRONTEND_DATE_FORMAT)
             .add(1, "year")
             .isSame(dayjs(date, FRONTEND_DATE_FORMAT), "day");
