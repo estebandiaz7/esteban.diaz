@@ -1,8 +1,8 @@
 import { StyleSheet } from "react-native";
 
-import colors from "../../../config/colors";
+import colors from "config/colors";
 
-const { red, border } = colors;
+const { red, border, white } = colors;
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     fontSize: 14,
     borderRadius: 4,
-    backgroundColor: "white",
+    backgroundColor: white,
     borderWidth: 1,
     borderColor: border,
   },

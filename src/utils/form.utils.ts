@@ -2,8 +2,6 @@ import * as yup from "yup";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 
-import { FormShape, NewProductFormValues } from "../types/form.types";
-
 dayjs.extend(customParseFormat);
 
 export const validationMessages = {
@@ -24,8 +22,8 @@ export const validationRules = {
 
 const { requiredString } = validationRules;
 
-export const newProductFormSchema = () =>
-  yup.object().shape<FormShape<NewProductFormValues>>({
+export const getProductFormSchema = () => {
+  return yup.object().shape({
     id: yup
       .string()
       .required(required)
@@ -60,3 +58,4 @@ export const newProductFormSchema = () =>
         return isAfter;
       }),
   });
+};

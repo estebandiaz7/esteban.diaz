@@ -4,15 +4,15 @@ import { ListRenderItem, View, FlatList } from "react-native";
 
 import styles from "./Home.styles";
 import { HomeProps as Props } from "./Home.types";
-import { useFetchProducts } from "../../../services/finance.service.hooks";
-import EmptyState from "../EmptyState/EmptyState";
-import { FinanceProduct } from "../../../types/product.types";
-import { renderPlaceholders, searchByText } from "../../../utils/common.utils";
-import Product from "../../Product/Product";
-import Search from "../../Search/Search";
-import Button from "../Button/Button";
-import useProductStore from "../../../stores/product.store";
-import { RootNavigatorPropList } from "../../../navigation/Navigator.types";
+import { useFetchProducts } from "services/finance.service.hooks";
+import { FinanceProduct } from "types/product.types";
+import { renderPlaceholders, searchByText } from "utils/common.utils";
+import useProductStore from "stores/product.store";
+import { RootNavigatorPropList } from "navigation/Navigator.types";
+import Product from "components/Product/Product";
+import EmptyState from "components/global/EmptyState/EmptyState";
+import Search from "components/Search/Search";
+import Button from "components/global/Button/Button";
 
 const Home: React.FC<Props> = (props) => {
   const fetchProducts = useFetchProducts();

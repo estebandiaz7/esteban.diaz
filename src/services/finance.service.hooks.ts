@@ -3,7 +3,8 @@ import { AxiosError } from "axios";
 
 import { fetchProducts, verifyProductId } from "./finance.service";
 import { createProduct, updateProduct, deleteProduct } from "./finance.service";
-import { FinanceProduct } from "../types/product.types";
+import { FinanceProduct } from "types/product.types";
+import useProductStore from "stores/product.store";
 
 const getFetchProductsQueryKey = () => {
   return ["finance-products"];
@@ -35,9 +36,13 @@ export const useCreateProduct = () => {
 
 export const useUpdateProduct = () => {
   const queryClient = useQueryClient();
+  const setSelectedProduct = useProductStore(
+    (state) => state.setSelectedProduct
+  );
 
   return useMutation<FinanceProduct, AxiosError, FinanceProduct>({
     mutationFn: updateProduct,
+    onSuccess: (response) => setSelectedProduct(response),
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: getFetchProductsQueryKey() });
     },

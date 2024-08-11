@@ -1,6 +1,6 @@
 import axios, { AxiosError } from "axios";
 
-import CONSTANTS from "../config/constants";
+import CONSTANTS from "config/constants";
 
 const { API_URL, AUTHOR_ID, DEFAULT_REQUEST_TIMEOUT } = CONSTANTS;
 

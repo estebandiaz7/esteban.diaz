@@ -38,3 +38,8 @@ export const formatFrontendDateToBackend = (frontDate: string) => {
   const backendDate = dayjs(frontDate, "DD/MM/YYYY").format("YYYY-MM-DD");
   return backendDate;
 };
+
+export const formatBackendDateToFrontend = (backendDate: string) => {
+  const frontendDate = dayjs(backendDate, "YYYY-MM-DD").format("DD/MM/YYYY");
+  return frontendDate;
+};

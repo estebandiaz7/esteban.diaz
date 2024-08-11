@@ -1,8 +1,4 @@
-import { AnySchema } from "yup";
-
-export type FormShape<T> = Partial<Record<keyof T, AnySchema>>;
-
-export interface NewProductFormValues {
+export interface ProductFormValues {
   id: string;
   name: string;
   description: string;

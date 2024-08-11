@@ -1,4 +1,4 @@
-import colors from "../../../config/colors";
+import colors from "config/colors";
 import { ButtonType } from "./Button.types";
 
 const { primary, gray93, red, white, blue } = colors;

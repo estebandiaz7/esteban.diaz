@@ -33,8 +33,10 @@
     "@babel/core": "^7.20.0",
     "@tanstack/eslint-plugin-query": "^5.51.15",
     "@types/react": "~18.2.45",
+    "babel-plugin-module-resolver": "^5.0.2",
     "eslint": "^8.57.0",
     "eslint-config-expo": "^7.1.2",
+    "eslint-plugin-import": "^2.29.1",
     "typescript": "~5.3.3"
   },
   "private": true

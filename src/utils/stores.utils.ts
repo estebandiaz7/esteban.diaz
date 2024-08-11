@@ -1,4 +1,4 @@
-import { StorePreviousValue, StoreSetState } from "../types/zustand.types";
+import { StorePreviousValue, StoreSetState } from "types/zustand.types";
 
 export const getStoreSetState = <T = unknown>(
   payload: Parameters<StoreSetState<T>>[0],

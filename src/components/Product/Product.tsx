@@ -1,12 +1,12 @@
 import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import AntDesign from "@expo/vector-icons/AntDesign";
+import { useNavigation } from "@react-navigation/native";
 
 import styles from "./Product.styles";
 import { ProductProps as Props } from "./Product.types";
-import { useNavigation } from "@react-navigation/native";
-import { RootNavigatorPropList } from "../../navigation/Navigator.types";
-import useProductStore from "../../stores/product.store";
+import useProductStore from "stores/product.store";
+import { RootNavigatorPropList } from "navigation/Navigator.types";
 
 const Product: React.FC<Props> = (props) => {
   const { product } = props;

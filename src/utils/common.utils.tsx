@@ -1,6 +1,7 @@
 import { Platform } from "react-native";
-import SimplePlaceholder from "../components/global/SimplePlaceholder/SimplePlaceholder";
-import { FinanceProduct } from "../types/product.types";
+
+import SimplePlaceholder from "components/global/SimplePlaceholder/SimplePlaceholder";
+import { FinanceProduct } from "types/product.types";
 
 export const asyncDelay = (time: number): Promise<void> => {
   return new Promise((resolve) => {

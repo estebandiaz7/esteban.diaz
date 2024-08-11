@@ -1,4 +1,4 @@
-export const colors = {
+const colors = {
   primary: "hsla(50, 100%, 49%, 1)",
   black: "hsla(0, 0%, 0%, 1)",
   white: "hsla(0, 0%, 100%, 1)",

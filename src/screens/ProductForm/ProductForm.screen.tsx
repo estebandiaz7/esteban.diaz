@@ -3,7 +3,7 @@ import { View } from "react-native";
 
 import styles from "./ProductForm.screen.styles";
 import { ProductFormProps as Props } from "./ProductForm.screen.types";
-import ProductForm from "../../components/ProductForm/ProductForm";
+import ProductForm from "components/ProductForm/ProductForm";
 
 const ProductFormScreen: React.FC<Props> = (props) => {
   return (

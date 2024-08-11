@@ -1,9 +1,9 @@
-import { NewProductFormValues } from "../types/form.types";
-import { FinanceProduct } from "../types/product.types";
+import { ProductFormValues } from "types/form.types";
+import { FinanceProduct } from "types/product.types";
 import { formatFrontendDateToBackend } from "./date.utils";
 
 export const transformProductByForm = (
-  form: NewProductFormValues
+  form: ProductFormValues
 ): FinanceProduct => {
   const { dateRelease, dateRevision, description, id, logo, name } = form;
 

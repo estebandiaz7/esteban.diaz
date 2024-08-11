@@ -6,10 +6,10 @@ import { useNavigation } from "@react-navigation/native";
 
 import { ModalProps as Props } from "./Modal.types";
 import styles from "./Modal.styles";
-import useProductStore from "../../../stores/product.store";
-import Button from "../Button/Button";
-import { useDeleteProduct } from "../../../services/finance.service.hooks";
-import { RootNavigatorPropList } from "../../../navigation/Navigator.types";
+import { RootNavigatorPropList } from "navigation/Navigator.types";
+import useProductStore from "stores/product.store";
+import { useDeleteProduct } from "services/finance.service.hooks";
+import Button from "components/global/Button/Button";
 
 const Modal: React.FC<Props> = (props) => {
   const { modalVisible, setModalVisible } = props;

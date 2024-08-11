@@ -6,9 +6,9 @@ import { StatusBar } from "expo-status-bar";
 
 import { navigationRef } from "./Navigator.helpers";
 import { NavigatorProps as Props, NavigatorScreens } from "./Navigator.types";
-import Home from "../screens/Home/Home.screen";
-import ProductDetail from "../screens/ProductDetail/ProductDetail.screen";
-import ProductFormScreen from "../screens/ProductForm/ProductForm.screen";
+import Home from "screens/Home/Home.screen";
+import ProductDetail from "screens/ProductDetail/ProductDetail.screen";
+import ProductFormScreen from "screens/ProductForm/ProductForm.screen";
 
 const Stack = createNativeStackNavigator<NavigatorScreens>();
 

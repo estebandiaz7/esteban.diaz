@@ -1,4 +1,4 @@
-import { FinanceProduct } from "../../types/product.types";
+import { FinanceProduct } from "types/product.types";
 
 export interface ProductProps {
   product: FinanceProduct;

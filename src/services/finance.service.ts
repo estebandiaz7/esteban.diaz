@@ -1,7 +1,7 @@
-import { FinanceProduct } from "../types/product.types";
-import axiosDefault from "../utils/axios.utils";
-import { getStatusAndErrorFromResponse } from "../utils/axios.utils";
-import { getStatusAndDataFromError } from "../utils/axios.utils";
+import { FinanceProduct } from "types/product.types";
+import axiosDefault from "utils/axios.utils";
+import { getStatusAndErrorFromResponse } from "utils/axios.utils";
+import { getStatusAndDataFromError } from "utils/axios.utils";
 
 const financialURL = `/bp/products`;
 

@@ -1,5 +1,7 @@
-import { NewProductFormValues } from "../../types/form.types";
+import { FinanceProduct } from "types/product.types";
 import { FormInputRef } from "./ProductForm.types";
+import { ProductFormValues } from "types/form.types";
+import { formatBackendDateToFrontend } from "utils/date.utils";
 
 export const getDefaultValuesForRef = (): FormInputRef => {
   return {
@@ -12,11 +14,19 @@ export const getDefaultValuesForRef = (): FormInputRef => {
   };
 };
 
-export const newProductFormDefaultValues: NewProductFormValues = {
-  dateRelease: "",
-  dateRevision: "",
-  description: "",
-  id: "",
-  logo: "",
-  name: "",
+export const getDefaultValues = (
+  selectedProduct?: FinanceProduct
+): ProductFormValues => {
+  const { date_release, date_revision, description } = selectedProduct ?? {};
+  const { name, logo, id } = selectedProduct ?? {};
+  return {
+    dateRelease: date_release ? formatBackendDateToFrontend(date_release) : "",
+    dateRevision: date_revision
+      ? formatBackendDateToFrontend(date_revision)
+      : "",
+    description: description ?? "",
+    id: id ?? "",
+    logo: logo ?? "",
+    name: name ?? "",
+  };
 };

@@ -4,11 +4,11 @@ import { useNavigation } from "@react-navigation/native";
 
 import styles from "./ProductDetail.styles";
 import { ProductDetailProps as Props } from "./ProductDetail.types";
-import useProductStore from "../../stores/product.store";
-import Modal from "../global/Modal/Modal";
-import Button from "../global/Button/Button";
-import { RootNavigatorPropList } from "../../navigation/Navigator.types";
-import { formatDate } from "../../utils/date.utils";
+import useProductStore from "stores/product.store";
+import { RootNavigatorPropList } from "navigation/Navigator.types";
+import { formatDate } from "utils/date.utils";
+import Button from "components/global/Button/Button";
+import Modal from "components/global/Modal/Modal";
 
 const ProductDetail: React.FC<Props> = (props) => {
   const selectedProduct = useProductStore((state) => state.selectedProduct);

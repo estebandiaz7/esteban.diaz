@@ -8,30 +8,31 @@ import { useNavigation } from "@react-navigation/native";
 import styles from "./ProductForm.styles";
 import { FormInputRef, InputRefKeys } from "./ProductForm.types";
 import { ProductFormProps as Props } from "./ProductForm.types";
-import Button from "../global/Button/Button";
-import useProductStore from "../../stores/product.store";
-import { isAndroid, isiOS } from "../../utils/common.utils";
-import { newProductFormSchema } from "../../utils/form.utils";
-import TextBox from "../global/Textbox/Textbox";
-import { NewProductFormValues } from "../../types/form.types";
-import { formatInputDate } from "../../utils/date.utils";
-import { useCreateProduct } from "../../services/finance.service.hooks";
-import { useUpdateProduct } from "../../services/finance.service.hooks";
-import { useVerifyProductId } from "../../services/finance.service.hooks";
-import { transformProductByForm } from "../../utils/product.utils";
-import { RootNavigatorPropList } from "../../navigation/Navigator.types";
+import { getDefaultValues } from "./ProductForm.helpers";
 import { getDefaultValuesForRef } from "./ProductForm.helpers";
+import useProductStore from "stores/product.store";
+import { ProductFormValues } from "types/form.types";
+import { getProductFormSchema } from "utils/form.utils";
+import { useCreateProduct } from "services/finance.service.hooks";
+import { useUpdateProduct } from "services/finance.service.hooks";
+import { useVerifyProductId } from "services/finance.service.hooks";
+import { RootNavigatorPropList } from "navigation/Navigator.types";
+import { transformProductByForm } from "utils/product.utils";
+import TextBox from "components/global/Textbox/Textbox";
+import Button from "components/global/Button/Button";
+import { formatInputDate } from "utils/date.utils";
+import { isAndroid, isiOS } from "utils/common.utils";
 
 const ProductForm: React.FC<Props> = (props) => {
   const selectedProduct = useProductStore((state) => state.selectedProduct);
-  const newProductMethods = useForm({
+  const newProductMethods = useForm<ProductFormValues>({
     mode: "onChange",
-    resolver: yupResolver(newProductFormSchema()),
+    resolver: yupResolver(getProductFormSchema()),
   });
-  const updateProductMethods = useForm({
+  const updateProductMethods = useForm<ProductFormValues>({
     mode: "onChange",
-    // resolver: yupResolver(),
-    // defaultValues: {},
+    resolver: yupResolver(getProductFormSchema()),
+    defaultValues: getDefaultValues(selectedProduct),
   });
   const inputs = useRef<FormInputRef>(getDefaultValuesForRef());
   const { goBack } = useNavigation<RootNavigatorPropList>();
@@ -55,7 +56,7 @@ const ProductForm: React.FC<Props> = (props) => {
     ? "Formulario de edición"
     : "Formulario de registro";
 
-  const createProductHandler = async (form: NewProductFormValues) => {
+  const createProductHandler = async (form: ProductFormValues) => {
     const { id } = form;
 
     if (await verifyProductId(id)) {
@@ -77,10 +78,11 @@ const ProductForm: React.FC<Props> = (props) => {
     }
   };
 
-  const updateProductHandler = async (form: any) => {
+  const updateProductHandler = async (form: ProductFormValues) => {
     try {
-      await updateProduct(form);
+      await updateProduct(transformProductByForm(form));
       resetUpdate();
+      goBack();
     } catch (e) {
       setError("dateRevision", {
         message: e.message,
@@ -88,7 +90,7 @@ const ProductForm: React.FC<Props> = (props) => {
     }
   };
 
-  const submitHandler = (form: NewProductFormValues | any) => {
+  const submitHandler = (form: ProductFormValues) => {
     if (method === "POST") createProductHandler(form);
     if (method === "PUT") updateProductHandler(form);
   };

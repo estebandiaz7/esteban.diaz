@@ -1,7 +1,7 @@
 import { RouteProp } from "@react-navigation/native";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
 
-import { NavigatorScreens } from "../../navigation/Navigator.types";
+import { NavigatorScreens } from "navigation/Navigator.types";
 
 export interface ProductDetailProps {
   navigation: ProductDetailNavigation;

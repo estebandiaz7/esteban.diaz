@@ -1,5 +1,3 @@
-// Finance product interfaces and types
-
 export interface FinanceProduct {
   id: string;
   name: string;

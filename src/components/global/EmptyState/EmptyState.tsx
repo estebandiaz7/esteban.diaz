@@ -1,11 +1,10 @@
 import React from "react";
 import { View, Text } from "react-native";
+import AntDesign from "@expo/vector-icons/AntDesign";
 
 import styles from "./EmptyState.styles";
 import { EmptyStateProps as Props } from "./EmptyState.types";
-
-import AntDesign from "@expo/vector-icons/AntDesign";
-import Button from "../Button/Button";
+import Button from "components/global/Button/Button";
 
 const EmptyState: React.FC<Props> = (props) => {
   const { style, image, title, onPress } = props;
