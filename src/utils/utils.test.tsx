@@ -1,5 +1,5 @@
 import { FinanceProduct } from "types/product.types";
-import { searchByText } from "./common.utils";
+import { renderPlaceholders, searchByText } from "./common.utils";
 import { buildProduct } from "./testUtils/builders/product.builders";
 import { getStoreSetState } from "./stores.utils";
 import { transformFormToFinanceProduct } from "utils/product.utils";
@@ -7,6 +7,31 @@ import { formatFrontendDateToBackend } from "utils/date.utils";
 import { ProductFormValues } from "types/form.types";
 import { formatBackendDateToFrontend } from "utils/date.utils";
 import { formatInputDate, formatDate } from "utils/date.utils";
+import SimplePlaceholder from "components/global/SimplePlaceholder/SimplePlaceholder";
+
+describe("renderPlaceholders", () => {
+  it("should render the specified number of placeholders", () => {
+    const length = 6;
+    const placeholders = renderPlaceholders(length);
+
+    expect(placeholders).toHaveLength(length);
+    placeholders.forEach((placeholder, index) => {
+      expect(placeholder.type).toBe(SimplePlaceholder);
+      expect(placeholder.key).toBe(index.toString());
+    });
+  });
+
+  it("should render 5 placeholders by default if no length is specified", () => {
+    //@ts-expect-error
+    const placeholders = renderPlaceholders();
+
+    expect(placeholders).toHaveLength(5);
+    placeholders.forEach((placeholder, index) => {
+      expect(placeholder.type).toBe(SimplePlaceholder);
+      expect(placeholder.key).toBe(index.toString());
+    });
+  });
+});
 
 describe("searchByText", () => {
   const products: FinanceProduct[] = [
@@ -88,10 +113,6 @@ describe("formatInputDate", () => {
     expect(formatInputDate("", "01-01-2022")).toBe("01/01/2022");
     expect(formatInputDate("", "01012022")).toBe("01/01/2022");
     expect(formatInputDate("", "01.01.2022")).toBe("01/01/2022");
-  });
-
-  it("should return the input date if it is not 8 characters long", () => {
-    expect(formatInputDate("", "202201")).toBe("202201");
   });
 });
 

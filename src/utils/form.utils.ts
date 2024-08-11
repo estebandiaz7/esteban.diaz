@@ -38,22 +38,35 @@ export const getProductFormSchema = () => {
     dateRelease: yup
       .string()
       .required(requiredStringMessage)
-      .test("dateRelease", "Fecha inválida", (date) => {
-        const isAfter = dayjs(date, FRONTEND_DATE_FORMAT).isAfter(
-          dayjs(),
-          "day"
-        );
-        return isAfter;
-      }),
+      .test(
+        "dateRelease",
+        "La fecha debe ser igual o mayor a la fecha actual",
+        (date) => {
+          const isSameDay = dayjs(date, FRONTEND_DATE_FORMAT).isSame(
+            dayjs(),
+            "day"
+          );
+          const isAfter = dayjs(date, FRONTEND_DATE_FORMAT).isAfter(
+            dayjs(),
+            "day"
+          );
+          return isAfter || isSameDay;
+        }
+      ),
     dateRevision: yup
       .string()
       .required(requiredStringMessage)
-      .test("dateRevision", "Fecha inválida", (date) => {
-        const isAfter = dayjs(date, FRONTEND_DATE_FORMAT).isAfter(
-          dayjs().add(1, "year"),
-          "day"
-        );
-        return isAfter;
-      }),
+      .test(
+        "dateRevision",
+        "La fecha debe ser exactamente un año posterior a la fecha de liberación",
+        function (date) {
+          const dateRelease = this.parent.dateRelease;
+          console.log({ dateRelease, date });
+          const isExactlyOneYearAfter = dayjs(dateRelease, FRONTEND_DATE_FORMAT)
+            .add(1, "year")
+            .isSame(dayjs(date, FRONTEND_DATE_FORMAT), "day");
+          return isExactlyOneYearAfter;
+        }
+      ),
   });
 };

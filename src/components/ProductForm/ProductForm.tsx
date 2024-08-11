@@ -119,6 +119,7 @@ const ProductForm: React.FC<Props> = (props) => {
                 label="ID"
                 name="id"
                 returnKeyType="next"
+                placeholder="12345"
                 editable={!disableId}
                 onSubmitEditing={() => focusNextField("name")}
               />
@@ -127,6 +128,7 @@ const ProductForm: React.FC<Props> = (props) => {
                 label="Nombre"
                 name="name"
                 returnKeyType="next"
+                placeholder="Producto 1"
                 onSubmitEditing={() => focusNextField("description")}
               />
               <TextBox
@@ -134,6 +136,7 @@ const ProductForm: React.FC<Props> = (props) => {
                 label="Descripción"
                 name="description"
                 returnKeyType="next"
+                placeholder="Descripción de producto"
                 onSubmitEditing={() => focusNextField("logo")}
               />
               <TextBox
@@ -141,6 +144,7 @@ const ProductForm: React.FC<Props> = (props) => {
                 label="Logo"
                 name="logo"
                 returnKeyType="next"
+                placeholder="https://www.example.com/logo.png"
                 onSubmitEditing={() => focusNextField("dateRelease")}
               />
               <TextBox
@@ -150,6 +154,7 @@ const ProductForm: React.FC<Props> = (props) => {
                 returnKeyType="next"
                 maxLength={10}
                 formatter={formatInputDate}
+                placeholder="22/02/2023"
                 onSubmitEditing={() => focusNextField("dateRevision")}
               />
               <TextBox
@@ -159,6 +164,7 @@ const ProductForm: React.FC<Props> = (props) => {
                 returnKeyType="done"
                 maxLength={10}
                 formatter={formatInputDate}
+                placeholder="22/02/2024"
                 onSubmitEditing={handleSubmit(submitHandler)}
               />
             </View>

@@ -1,6 +1,7 @@
 import React, { useCallback, useMemo, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { ListRenderItem, View, FlatList } from "react-native";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
 import styles from "./Home.styles";
 import { HomeProps as Props } from "./Home.types";
@@ -47,7 +48,13 @@ const Home: React.FC<Props> = (props) => {
     }
 
     if (isError) {
-      return <EmptyState title={errorMessage} onPress={refetchProducts} />;
+      return (
+        <EmptyState
+          title={errorMessage}
+          image={<MaterialIcons name="error" size={40} color="black" />}
+          onPress={refetchProducts}
+        />
+      );
     }
 
     if (isSuccess) return <EmptyState onPress={refetchProducts} />;

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, NativeSyntheticEvent } from "react-native";
+import { ImageErrorEventData } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 import styles from "./ProductDetail.styles";
@@ -15,6 +16,7 @@ const ProductDetail: React.FC<Props> = (props) => {
   const { id, name, date_release, date_revision } = selectedProduct ?? {};
   const { description, logo } = selectedProduct ?? {};
   const [modalVisible, setModalVisible] = useState(false);
+  const [imageErrorMessage, setImageErrorMessage] = useState("");
   const { navigate } = useNavigation<RootNavigatorPropList>();
 
   const renderItem = (title?: string, content?: string) => {
@@ -38,6 +40,11 @@ const ProductDetail: React.FC<Props> = (props) => {
     navigate("ProductForm");
   };
 
+  const onErrorImage = (e: NativeSyntheticEvent<ImageErrorEventData>) => {
+    const { error } = e.nativeEvent;
+    setImageErrorMessage(error);
+  };
+
   return (
     <>
       <View style={styles.container}>
@@ -52,7 +59,17 @@ const ProductDetail: React.FC<Props> = (props) => {
             {logo ? (
               <View style={styles.imageContainer}>
                 {renderItem("Logo")}
-                <Image src={logo} style={styles.image} resizeMode="contain" />
+                {logo && !imageErrorMessage ? (
+                  <Image
+                    src={logo}
+                    style={styles.image}
+                    resizeMode="contain"
+                    onError={onErrorImage}
+                  />
+                ) : null}
+                {imageErrorMessage ? (
+                  <Text style={styles.imageError}>{imageErrorMessage}</Text>
+                ) : null}
               </View>
             ) : null}
             {renderItem("Fecha liberación", formatDate(date_release))}

@@ -74,6 +74,10 @@ const styles = StyleSheet.create({
   deleteText: {
     color: white,
   },
+  imageError: {
+    fontSize: 14,
+    color: red,
+  },
 });
 
 export default styles;

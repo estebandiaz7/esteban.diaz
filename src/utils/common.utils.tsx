@@ -14,12 +14,13 @@ export const searchByText = (
   products: FinanceProduct[],
   searchText: string
 ) => {
+  const lowerSearchText = searchText.toLowerCase();
   const results = products.filter((item) => {
     const { id, name, description } = item;
     return (
-      id.includes(searchText) ||
-      name.includes(searchText) ||
-      description.includes(searchText)
+      id.toLowerCase().includes(lowerSearchText) ||
+      name.toLowerCase().includes(lowerSearchText) ||
+      description.toLowerCase().includes(lowerSearchText)
     );
   });
 
