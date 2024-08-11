@@ -1,10 +1,17 @@
 import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
+
+import CONSTANTS from "config/constants";
+
+dayjs.extend(customParseFormat);
+
+const { FRONTEND_DATE_FORMAT, BACKEND_DATE_FORMAT } = CONSTANTS;
 
 export const formatInputDate = (oldDate: string, newDate: string) => {
   let cleaned = "";
 
   // Ensure the string is no longer than 8 characters
-  if (newDate.length === 8) {
+  if (newDate.length >= 8) {
     // Remove any non-digit characters
     cleaned = newDate.replace(/[^0-9]/g, "");
     cleaned = cleaned.slice(0, 8);
@@ -31,15 +38,19 @@ export const formatInputDate = (oldDate: string, newDate: string) => {
 
 export const formatDate = (date?: string) => {
   if (!date) return "";
-  return dayjs(date).format("DD/MM/YYYY");
+  return dayjs(date, BACKEND_DATE_FORMAT, true).format(FRONTEND_DATE_FORMAT);
 };
 
 export const formatFrontendDateToBackend = (frontDate: string) => {
-  const backendDate = dayjs(frontDate, "DD/MM/YYYY").format("YYYY-MM-DD");
+  const backendDate = dayjs(frontDate, FRONTEND_DATE_FORMAT).format(
+    BACKEND_DATE_FORMAT
+  );
   return backendDate;
 };
 
 export const formatBackendDateToFrontend = (backendDate: string) => {
-  const frontendDate = dayjs(backendDate, "YYYY-MM-DD").format("DD/MM/YYYY");
+  const frontendDate = dayjs(backendDate, BACKEND_DATE_FORMAT).format(
+    FRONTEND_DATE_FORMAT
+  );
   return frontendDate;
 };

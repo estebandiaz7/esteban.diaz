@@ -17,7 +17,7 @@ import { useCreateProduct } from "services/finance.service.hooks";
 import { useUpdateProduct } from "services/finance.service.hooks";
 import { useVerifyProductId } from "services/finance.service.hooks";
 import { RootNavigatorPropList } from "navigation/Navigator.types";
-import { transformProductByForm } from "utils/product.utils";
+import { transformFormToFinanceProduct } from "utils/product.utils";
 import TextBox from "components/global/Textbox/Textbox";
 import Button from "components/global/Button/Button";
 import { formatInputDate } from "utils/date.utils";
@@ -68,7 +68,7 @@ const ProductForm: React.FC<Props> = (props) => {
 
     resetVerify();
     try {
-      await createProduct(transformProductByForm(form));
+      await createProduct(transformFormToFinanceProduct(form));
       resetCreate();
       goBack();
     } catch (e) {
@@ -80,7 +80,7 @@ const ProductForm: React.FC<Props> = (props) => {
 
   const updateProductHandler = async (form: ProductFormValues) => {
     try {
-      await updateProduct(transformProductByForm(form));
+      await updateProduct(transformFormToFinanceProduct(form));
       resetUpdate();
       goBack();
     } catch (e) {

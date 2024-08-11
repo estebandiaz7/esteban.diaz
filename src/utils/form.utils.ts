@@ -2,56 +2,54 @@ import * as yup from "yup";
 import dayjs from "dayjs";
 import customParseFormat from "dayjs/plugin/customParseFormat";
 
+import CONSTANTS from "config/constants";
+
 dayjs.extend(customParseFormat);
 
-export const validationMessages = {
-  required: "Campo requerido",
-  minLength: (min: number) => `Debe tener al menos ${min} caracteres`,
-  maxLength: (max: number) => `Debe tener menos de ${max} caracteres`,
-};
+const { FRONTEND_DATE_FORMAT, ID_MAX_LENGTH, ID_MIN_LENGTH } = CONSTANTS;
+const { NAME_MAX_LENGTH, NAME_MIN_LENGTH } = CONSTANTS;
+const { DESCRIPTION_MAX_LENGTH, DESCRIPTION_MIN_LENGTH } = CONSTANTS;
 
-const { required, maxLength, minLength } = validationMessages;
-
-export const validationRules = {
-  requiredString: yup.string().required(required),
-  minLength: (min: number) =>
-    yup.string().required(required).min(min, minLength(min)),
-  maxLength: (max: number) =>
-    yup.string().required(required).min(max, maxLength(max)),
-};
-
-const { requiredString } = validationRules;
+const requiredStringMessage = "Campo requerido";
+const requiredStringRule = yup.string().required(requiredStringMessage);
+const minLengthMessage = (min: number) =>
+  `Debe tener al menos ${min} caracteres`;
+const maxLengthMessage = (max: number) =>
+  `Debe tener menos de ${max} caracteres`;
 
 export const getProductFormSchema = () => {
   return yup.object().shape({
     id: yup
       .string()
-      .required(required)
-      .min(3, minLength(3))
-      .max(10, maxLength(10)),
+      .required(requiredStringMessage)
+      .min(ID_MIN_LENGTH, minLengthMessage(ID_MIN_LENGTH))
+      .max(ID_MAX_LENGTH, maxLengthMessage(ID_MAX_LENGTH)),
     name: yup
       .string()
-      .required(required)
-      .min(5, minLength(5))
-      .max(100, maxLength(100)),
+      .required(requiredStringMessage)
+      .min(NAME_MIN_LENGTH, minLengthMessage(NAME_MIN_LENGTH))
+      .max(NAME_MAX_LENGTH, maxLengthMessage(NAME_MAX_LENGTH)),
     description: yup
       .string()
-      .required(required)
-      .min(10, minLength(10))
-      .max(200, maxLength(200)),
-    logo: requiredString,
+      .required(requiredStringMessage)
+      .min(DESCRIPTION_MIN_LENGTH, minLengthMessage(DESCRIPTION_MIN_LENGTH))
+      .max(DESCRIPTION_MAX_LENGTH, maxLengthMessage(DESCRIPTION_MAX_LENGTH)),
+    logo: requiredStringRule,
     dateRelease: yup
       .string()
-      .required(required)
+      .required(requiredStringMessage)
       .test("dateRelease", "Fecha inválida", (date) => {
-        const isAfter = dayjs(date, "DD/MM/YYYY").isAfter(dayjs(), "day");
+        const isAfter = dayjs(date, FRONTEND_DATE_FORMAT).isAfter(
+          dayjs(),
+          "day"
+        );
         return isAfter;
       }),
     dateRevision: yup
       .string()
-      .required(required)
-      .test("dateRelease", "date revision message", (date) => {
-        const isAfter = dayjs(date, "DD/MM/YYYY").isAfter(
+      .required(requiredStringMessage)
+      .test("dateRevision", "Fecha inválida", (date) => {
+        const isAfter = dayjs(date, FRONTEND_DATE_FORMAT).isAfter(
           dayjs().add(1, "year"),
           "day"
         );

@@ -2,7 +2,7 @@ import { ProductFormValues } from "types/form.types";
 import { FinanceProduct } from "types/product.types";
 import { formatFrontendDateToBackend } from "./date.utils";
 
-export const transformProductByForm = (
+export const transformFormToFinanceProduct = (
   form: ProductFormValues
 ): FinanceProduct => {
   const { dateRelease, dateRevision, description, id, logo, name } = form;
