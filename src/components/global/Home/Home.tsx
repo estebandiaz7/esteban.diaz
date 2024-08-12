@@ -57,7 +57,9 @@ const Home: React.FC<Props> = (props) => {
       );
     }
 
-    if (isSuccess) return <EmptyState onPress={refetchProducts} />;
+    if (isSuccess) {
+      return <EmptyState onPress={!searchText ? refetchProducts : undefined} />;
+    }
     return null;
   };
 
@@ -81,7 +83,11 @@ const Home: React.FC<Props> = (props) => {
         refreshing={isFetching}
         keyExtractor={(_item, index) => index.toString()}
         refreshControl={
-          <RefreshControl refreshing={isFetching} onRefresh={refetch} />
+          <RefreshControl
+            refreshing={isFetching}
+            onRefresh={refetch}
+            progressViewOffset={48}
+          />
         }
       />
       <Button title="Agregar" onPress={addProduct} />
