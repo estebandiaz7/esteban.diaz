@@ -6,6 +6,7 @@ import { View, Text, TextInput } from "react-native";
 
 import styles from "./Textbox.styles";
 import { TextBoxProps as Props } from "./Textbox.types";
+import { getTextFromMessage } from "utils/common.utils";
 
 const TextBox = forwardRef<TextInput, Props>((props, ref) => {
   const { name, label, rules, defaultValue, keyboardType, placeholder } = props;
@@ -49,7 +50,9 @@ const TextBox = forwardRef<TextInput, Props>((props, ref) => {
         autoCapitalize="none"
         underlineColorAndroid="transparent"
       />
-      {message ? <Text style={styles.error}>{`${message}`}</Text> : null}
+      {message ? (
+        <Text style={styles.error}>{getTextFromMessage(message)}</Text>
+      ) : null}
     </View>
   );
 });

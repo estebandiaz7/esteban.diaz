@@ -14,9 +14,6 @@ import Button from "components/global/Button/Button";
 const Modal: React.FC<Props> = (props) => {
   const { modalVisible, setModalVisible } = props;
   const selectedProduct = useProductStore((state) => state.selectedProduct);
-  const setSelectedProduct = useProductStore(
-    (state) => state.setSelectedProduct
-  );
   const deleteMutation = useDeleteProduct();
   const { mutateAsync: deleteProduct, reset: resetDelete } = deleteMutation;
   const { goBack } = useNavigation<RootNavigatorPropList>();
@@ -36,7 +33,6 @@ const Modal: React.FC<Props> = (props) => {
       if (!id) throw new Error("No se ha seleccionado un producto");
       await deleteProduct(id);
       resetDelete();
-      setSelectedProduct(undefined);
       toggleModalVisible();
       goBack();
     } catch (e) {

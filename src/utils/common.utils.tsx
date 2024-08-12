@@ -4,9 +4,9 @@ import SimplePlaceholder from "components/global/SimplePlaceholder/SimplePlaceho
 import { FinanceProduct } from "types/product.types";
 
 export const renderPlaceholders = (length: number) => {
-  const temporal = length ? length : 5;
+  const temporal = length ?? 5;
   return Array.from({ length: temporal }).map((_, index) => (
-    <SimplePlaceholder key={index} />
+    <SimplePlaceholder key={`placeholder-${index}-${index}`} />
   ));
 };
 
@@ -29,3 +29,9 @@ export const searchByText = (
 
 export const isiOS = Platform.OS === "ios";
 export const isAndroid = Platform.OS === "android";
+
+export const getTextFromMessage = (message: any) => {
+  if (typeof message === "string") return message;
+  if (typeof message === "number") return message.toString();
+  return JSON.stringify(message);
+};

@@ -2,6 +2,7 @@ import axios, { AxiosError } from "axios";
 
 import CONSTANTS from "config/constants";
 import { CommonResponse } from "services/finance.service.types";
+import { getTextFromMessage } from "./common.utils";
 
 const { API_URL, AUTHOR_ID, DEFAULT_REQUEST_TIMEOUT } = CONSTANTS;
 
@@ -38,7 +39,7 @@ export const getStatusFromError = (e: AxiosError) => {
 
 export const getDataFromError = (e: AxiosError) => {
   const data = e.response?.data;
-  if (data) return `${data}`;
+  if (data) return getTextFromMessage(data);
 };
 
 export const getStatusAndErrorFromResponse = (

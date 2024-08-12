@@ -26,7 +26,7 @@ export const buildStackNavigation = (
     navigate: (
       route:
         | { key: string; params?: any }
-        | { name: any; key?: string | undefined; params: any }
+        | { name: any; key?: string; params: any }
     ) => {},
     reset: (
       state: StackNavigationState<any> | PartialState<StackNavigationState<any>>

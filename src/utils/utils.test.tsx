@@ -8,6 +8,7 @@ import { ProductFormValues } from "types/form.types";
 import { formatBackendDateToFrontend } from "utils/date.utils";
 import { formatInputDate, formatDate } from "utils/date.utils";
 import SimplePlaceholder from "components/global/SimplePlaceholder/SimplePlaceholder";
+import { getTextFromMessage } from "./common.utils";
 
 describe("renderPlaceholders", () => {
   it("should render the specified number of placeholders", () => {
@@ -17,7 +18,7 @@ describe("renderPlaceholders", () => {
     expect(placeholders).toHaveLength(length);
     placeholders.forEach((placeholder, index) => {
       expect(placeholder.type).toBe(SimplePlaceholder);
-      expect(placeholder.key).toBe(index.toString());
+      expect(placeholder.key).toBe(`placeholder-${index}-${index}`);
     });
   });
 
@@ -28,7 +29,7 @@ describe("renderPlaceholders", () => {
     expect(placeholders).toHaveLength(5);
     placeholders.forEach((placeholder, index) => {
       expect(placeholder.type).toBe(SimplePlaceholder);
-      expect(placeholder.key).toBe(index.toString());
+      expect(placeholder.key).toBe(`placeholder-${index}-${index}`);
     });
   });
 });
@@ -139,5 +140,29 @@ describe("formatBackendDateToFrontend", () => {
     expect(formatBackendDateToFrontend("2022-01-01")).toBe("01/01/2022");
     expect(formatBackendDateToFrontend("2022-12-31")).toBe("31/12/2022");
     expect(formatBackendDateToFrontend("2022-02-28")).toBe("28/02/2022");
+  });
+});
+
+describe("getTextFromMessage", () => {
+  it("should return the message if it is a string", () => {
+    expect(getTextFromMessage("Hello")).toBe("Hello");
+  });
+
+  it("should return the message as a string if it is a number", () => {
+    expect(getTextFromMessage(123)).toBe("123");
+  });
+
+  it("should return the JSON stringified message if it is an object", () => {
+    const obj = { key: "value" };
+    expect(getTextFromMessage(obj)).toBe(JSON.stringify(obj));
+  });
+
+  it("should return the JSON stringified message if it is an array", () => {
+    const arr = [1, 2, 3];
+    expect(getTextFromMessage(arr)).toBe(JSON.stringify(arr));
+  });
+
+  it("should return the JSON stringified message if it is a boolean", () => {
+    expect(getTextFromMessage(true)).toBe(JSON.stringify(true));
   });
 });

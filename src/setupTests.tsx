@@ -16,13 +16,18 @@ interface WrapperProps {
   children?: ReactNode;
 }
 
+const HomeScreen = (children: ReactNode) => {
+  return <View>{children}</View>;
+};
+
 export const render = (ui: React.ReactElement, options: RenderOptions = {}) => {
   const { ...returnOptions } = options;
 
   // Wrapper component of the render function
   const Wrapper: React.FC<WrapperProps> = (props) => {
     const { children } = props;
-    const Screen = () => <View>{children}</View>;
+    const Home = () => HomeScreen(children);
+
     return (
       <SafeAreaProvider
         initialMetrics={{
@@ -32,7 +37,7 @@ export const render = (ui: React.ReactElement, options: RenderOptions = {}) => {
       >
         <NavigationContainer>
           <Stack.Navigator>
-            <Stack.Screen name="Home" component={Screen} />
+            <Stack.Screen name="Home" component={Home} />
           </Stack.Navigator>
         </NavigationContainer>
       </SafeAreaProvider>
@@ -52,7 +57,7 @@ export const appRender = (
   // Wrapper component of the render function
   const Wrapper: React.FC<WrapperProps> = (props) => {
     const { children } = props;
-    const InnerWrapper = wrapper ? wrapper : (props: any) => props.children;
+    const InnerWrapper = wrapper ?? ((props: any) => props.children);
     return (
       <Providers>
         <InnerWrapper>{children}</InnerWrapper>

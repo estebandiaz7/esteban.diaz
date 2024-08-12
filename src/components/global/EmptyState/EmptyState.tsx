@@ -8,11 +8,11 @@ import Button from "components/global/Button/Button";
 
 const EmptyState: React.FC<Props> = (props) => {
   const { style, image, title, onPress } = props;
-  const customText = title ? title : "No existen datos";
+  const customText = title ?? "No existen datos";
 
   return (
     <View style={[styles.container, style]}>
-      {image ? image : <AntDesign name="unknowfile1" size={40} color="black" />}
+      {image || <AntDesign name="unknowfile1" size={40} color="black" />}
       <Text style={styles.emptyText}>{customText}</Text>
       {onPress ? <Button title="Volver a intentar" onPress={onPress} /> : null}
     </View>

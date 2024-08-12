@@ -9,7 +9,7 @@ const { FRONTEND_DATE_FORMAT, BACKEND_DATE_FORMAT } = CONSTANTS;
 
 export const formatInputDate = (oldDate: string, newDate: string) => {
   // Remove any non-digit characters
-  let cleaned = newDate.replace(/[^0-9]/g, "");
+  let cleaned = newDate.replace(/\D/g, "");
 
   // Ensure the string is no longer than 8 characters
   cleaned = cleaned.slice(0, 8);
